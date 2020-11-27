@@ -18,7 +18,8 @@ class Room ():
     def remove_song_from_room_playlist (self, song):
         self.songs_playlist.remove (song)
 
-    # def find_guest (self, guest):
+    def clear_music_playlist (self, Room):
+        self.songs_playlist.clear()
 
 
         
