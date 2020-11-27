@@ -30,3 +30,7 @@ class TestRoom (unittest.TestCase):
         self.room_1 = Room ("Hip-Hop", [self.guest_1, self.guest_7, self.guest_4], [self.song_1, self.song_2, self.song_4, self.song_6])
         self.room_2 = Room ("Retrowave", [self.guest_2, self.guest_3, self.guest_5, self.guest_6], [self.song_3, self.song_5, self.song_7])
 
+        
+    def test_room_has_music_genre(self):
+        self.assertEqual("Retrowave", self.room_2.music_genre)
+
