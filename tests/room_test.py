@@ -16,21 +16,61 @@ class TestRoom (unittest.TestCase):
         self.song_5 = Song ("Kalax", "Fight for us")
         self.song_6 = Song ("Rick Astley", "Never Gonna Give You Up")
         self.song_7 = Song ("Gunship", "Tech Noir")
-
+        
         # GUESTS SETUP #
         self.guest_1 = Guest ("Angelo", 47, self.song_2)
         self.guest_2 = Guest ("Ryan", 128, self.song_3)
         self.guest_3 = Guest ("Sonia", 22, self.song_1)
-        self.guest_4 = Guest ("Alex", 54, self.song_2)
-        self.guest_5 = Guest ("Matt", 176, self.song_3)
-        self.guest_6 = Guest ("Lawrence", 85, self.song_1)
-        self.guest_7 = Guest ("Luke", 21, self.song_1)
+        self.guest_4 = Guest ("Alex", 54, self.song_5)
+        self.guest_5 = Guest ("Matt", 176, self.song_6)
+        self.guest_6 = Guest ("Lawrence", 85, self.song_4)
+        self.guest_7 = Guest ("Luke", 21, self.song_4)
 
         # ROOMS SETUP # 
-        self.room_1 = Room ("Hip-Hop", [self.guest_1, self.guest_7, self.guest_4], [self.song_1, self.song_2, self.song_4, self.song_6])
-        self.room_2 = Room ("Retrowave", [self.guest_2, self.guest_3, self.guest_5, self.guest_6], [self.song_3, self.song_5, self.song_7])
+        self.room_1 = Room ("Hip-Hop")
+        self.room_2 = Room ("Retrowave")
 
-        
-    def test_room_has_music_genre(self):
-        self.assertEqual("Retrowave", self.room_2.music_genre)
+    
+        # CLASS METHODS TESTS #
+    def test_room_has_music_genre (self):
+        self.assertEqual ("Retrowave", self.room_2.music_genre)
+
+    def test_room_has_guest_capacity (self):
+        self.assertEqual (5, self.room_1.guest_capacity)
+
+    def test_guest_check_in_and_check_out (self):
+        self.room_1.check_in_guest (self.guest_1)
+        self.room_1.check_in_guest (self.guest_2)
+        self.room_1.check_in_guest (self.guest_3)                       # We have checked in 3 guests in room_1
+        self.assertEqual (3, len(self.room_1.guests))                   # Confirmed 3 checked in guests.
+        self.room_1.check_out_guest (self.guest_2)                      # We check out 1 of the 3 guests.
+        self.assertEqual (2, len(self.room_1.guests))                   # Guests are now 2, test passed.
+
+    def test_add_and_remove_song_to_room_playlist (self):
+        self.room_1.add_song_to_room_playlist (self.song_1)
+        self.room_1.add_song_to_room_playlist (self.song_2)             # Added hiphop (2) songs to room_1
+        self.assertEqual (2, len(self.room_1.songs_playlist))           # Confirmed, 2 songs added to playlist.
+        self.room_1.remove_song_from_room_playlist (self.song_1)        # Removed 1 song from playlist.
+        self.assertEqual (1, len(self.room_1.songs_playlist))           # 1 song in the playlist, test passed.
+
+
+
+
+            
+
+    
+
+    
+
+    
+
+    
+
+
+
+    
+
+
+
+    
 
