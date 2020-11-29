@@ -61,7 +61,15 @@ class TestRoom (unittest.TestCase):
         self.room_2.clear_music_playlist(self.room_2)
         self.assertEqual (0, len(self.room_2.songs_playlist))   
 
-
+    def test_deny_entry_room_full (self):
+        self.room_1.check_in_guest (self.guest_1)
+        self.room_1.check_in_guest (self.guest_2)
+        self.room_1.check_in_guest (self.guest_3)
+        self.room_1.check_in_guest (self.guest_4)                       
+        self.room_1.check_in_guest (self.guest_5)                       
+        self.assertEqual (5, len(self.room_1.guests))                   # We have checked in 5 guests in room_1. Test passed.
+        self.room_1.check_in_guest (self.guest_6)                       # We try to add a 6th guest to the room, however as the room has reached max guest capacity...
+        self.assertEqual (5, len(self.room_1.guests))                   # ... the guest was not admitted. Guests are still 5, test passed.
 
             
 

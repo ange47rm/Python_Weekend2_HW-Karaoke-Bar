@@ -7,7 +7,10 @@ class Room ():
         self.songs_playlist = []    # list of Song objects
   
     def check_in_guest (self, guest):
-        self.guests.append (guest)
+        if len(self.guests) < self.guest_capacity:
+            self.guests.append (guest)
+        else:
+            return "The room is currently full, you are not allowed in."        
 
     def check_out_guest (self, guest):
         self.guests.remove (guest)
@@ -20,9 +23,6 @@ class Room ():
 
     def clear_music_playlist (self, Room):
         self.songs_playlist.clear()
-
-
-        
         
 
 
