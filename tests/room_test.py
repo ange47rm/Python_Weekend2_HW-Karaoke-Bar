@@ -98,9 +98,6 @@ class TestRoom (unittest.TestCase):
         self.room_1.add_song_to_room_playlist (self.song_4)             # We have added Guest_1's favourite song, so he will be happy.
         self.assertEqual ("Whooo!!!", self.guest_1.cheer_loudly_or_be_disappointed (self.room_1))
 
-    def test_room_has_register (self):
-        self.assertEqual ({}, self.room_1.register)
-
     
     
 
