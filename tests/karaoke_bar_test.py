@@ -36,4 +36,10 @@ class TestKaraoke_Bar (unittest.TestCase):
     def test_sell_drink_to_guest (self):
         self.karaoke_bar.sell_drink_to_guest (self.drink_4, self.guest_1)
 
+    def test_customer_is_added_to_bar_register (self):
+        self.karaoke_bar.sell_drink_to_guest (self.drink_4, self.guest_1)
+        self.assertEqual (["Angelo"], self.karaoke_bar.guests)
+
+
+
 
