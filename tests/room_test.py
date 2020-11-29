@@ -100,6 +100,8 @@ class TestRoom (unittest.TestCase):
 
     def test_room_has_register (self):
         self.assertEqual ({}, self.room_1.register)
+
+    
     
 
     
