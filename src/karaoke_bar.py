@@ -7,23 +7,37 @@ class Karaoke_Bar():
         self.register = {}
         self.drinks = []
         self.guests = []
+        self.till = 0
+
 
     def sell_drink_to_guest (self, drink, guest):
         if drink.price <= guest.money:
             guest.money -= drink.price
+            self.till += drink.price
             self.guests.append (guest.name)
 
+        if guest in self.guests:
+            self.register[guest.name]["Purchase History"].append(drink.name)
+            self.register[guest.name]["Money transactions"].append(drink.price)
+
+        else:
+            self.register [guest.name] = {
+                "Purchase History" : [],
+                "Money transactions" : []
+                }
+            self.register[guest.name]["Purchase History"].append(drink.name)
+            self.register[guest.name]["Money transactions"].append(drink.price)
+
+    # if a guest is in the bar guests lists already, update their dictionary items, if not, create new dictionary
+    # for guest and update accordingly.
+    # If a guest has multiple transactions however, the 2 lists are not updated. Their values are instead replaced,
+    # keeping only one Drink and one money transaction recorded.
+
+    
 
 
-        # if guest not in
-        #     self.register [guest.name] = {
-        #         "Purchase History" : []
-        #         "Money transactions" : []
-        #         }
 
 
-        #     self.register[guest.name]["Purchase History"].append(drink.name)
-        #     self.register[guest.name]["Money transactions"].append(drink.price)
 
 
 

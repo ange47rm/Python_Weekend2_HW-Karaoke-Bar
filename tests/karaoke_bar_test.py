@@ -36,9 +36,30 @@ class TestKaraoke_Bar (unittest.TestCase):
     def test_sell_drink_to_guest (self):
         self.karaoke_bar.sell_drink_to_guest (self.drink_4, self.guest_1)
 
-    def test_customer_is_added_to_bar_register (self):
+    def test_customers_are_added_to_bar_register (self):
         self.karaoke_bar.sell_drink_to_guest (self.drink_4, self.guest_1)
-        self.assertEqual (["Angelo"], self.karaoke_bar.guests)
+        self.karaoke_bar.sell_drink_to_guest (self.drink_2, self.guest_3)
+        self.assertEqual (["Angelo", "Sonia"], self.karaoke_bar.guests)
+
+    def test_till_money_increases_as_drink_is_purchased (self):
+        self.karaoke_bar.sell_drink_to_guest (self.drink_2, self.guest_3)
+        self.assertEqual(3, self.karaoke_bar.till)
+
+    def test_customer_money_decreases_by_drink_price (self):
+        self.karaoke_bar.sell_drink_to_guest (self.drink_4, self.guest_1)
+        self.assertEqual (41, self.guest_1.money)
+
+    def test_customer_is_added_to_register (self):
+        self.karaoke_bar.sell_drink_to_guest (self.drink_4, self.guest_1)
+        self.assertEqual ({'Angelo': {'Purchase History': ['Wine'], 'Money transactions': [6]}}, self.karaoke_bar.register)
+    
+    def test_update_register_for_guest (self):
+        self.karaoke_bar.sell_drink_to_guest (self.drink_4, self.guest_1)
+        self.karaoke_bar.sell_drink_to_guest (self.drink_1, self.guest_1)
+        self.assertEqual (None, self.karaoke_bar.register[self.guest_1.name])
+
+
+    
 
 
 
