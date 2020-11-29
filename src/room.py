@@ -5,12 +5,14 @@ class Room ():
         self.guests = []    # list of Guest objects
         self.guest_capacity = 5
         self.songs_playlist = []    # list of Song objects
+        self.till = 0
+        self.entry_fee = 25
   
     def check_in_guest (self, guest):
-        if len(self.guests) < self.guest_capacity:
+        if len(self.guests) < self.guest_capacity and guest.money >= self.entry_fee:
             self.guests.append (guest)
         else:
-            return "The room is currently full, you are not allowed in."        
+            return "Guest not allowed in. Room is currently full or guest has not enough money."        
 
     def check_out_guest (self, guest):
         self.guests.remove (guest)

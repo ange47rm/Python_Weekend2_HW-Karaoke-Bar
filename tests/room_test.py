@@ -20,7 +20,7 @@ class TestRoom (unittest.TestCase):
         # GUESTS SETUP #
         self.guest_1 = Guest ("Angelo", 47, self.song_2)
         self.guest_2 = Guest ("Ryan", 128, self.song_3)
-        self.guest_3 = Guest ("Sonia", 22, self.song_1)
+        self.guest_3 = Guest ("Sonia", 27, self.song_1)
         self.guest_4 = Guest ("Alex", 54, self.song_5)
         self.guest_5 = Guest ("Matt", 176, self.song_6)
         self.guest_6 = Guest ("Lawrence", 85, self.song_4)
@@ -72,7 +72,9 @@ class TestRoom (unittest.TestCase):
         self.assertEqual (5, len(self.room_1.guests))                   # ... the guest was not admitted. Guests are still 5, test passed.
 
             
-
+    def test_deny_entry_not_enough_money (self):
+        self.assertEqual("Guest not allowed in. Room is currently full or guest has not enough money.", self.room_2.check_in_guest (self.guest_7))
+        self.assertEqual (0, len(self.room_2.guests))                   # Guest was not allowed in due to insufficient money. Test pass.
     
 
     
