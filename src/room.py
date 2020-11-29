@@ -11,6 +11,8 @@ class Room ():
     def check_in_guest (self, guest):
         if len(self.guests) < self.guest_capacity and guest.money >= self.entry_fee:
             self.guests.append (guest)
+            self.till += self.entry_fee
+            guest.money -= self.entry_fee
         else:
             return "Guest not allowed in. Room is currently full or guest has not enough money."        
 
