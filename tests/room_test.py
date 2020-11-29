@@ -86,7 +86,17 @@ class TestRoom (unittest.TestCase):
         self.room_2.check_in_guest (self.guest_3)                       
         self.assertEqual(2, self.guest_3.money)                         # Guest 3's money decreased by 25 as they entered the room. Test passed.
 
+    def test_guest_is_disappointed_about_playlist (self):
+        self.room_2.add_song_to_room_playlist (self.song_5)
+        self.room_2.add_song_to_room_playlist (self.song_6)
+        self.room_2.add_song_to_room_playlist (self.song_7)             # We have not added Guest_2's favourite song, so he will be upset.
+        self.assertEqual ("This playlist is lame!", self.guest_2.cheer_loudly_or_be_disappointed (self.room_1))
 
+    def test_guest_is_happy_about_playlist (self):
+        self.room_1.add_song_to_room_playlist (self.song_1)
+        self.room_1.add_song_to_room_playlist (self.song_2)
+        self.room_1.add_song_to_room_playlist (self.song_4)             # We have added Guest_1's favourite song, so he will be happy.
+        self.assertEqual ("Whooo!!!", self.guest_1.cheer_loudly_or_be_disappointed (self.room_1))
     
 
     

@@ -25,7 +25,7 @@ class TestGuest (unittest.TestCase):
         self.assertEqual (128, self.guest_2.money)
         
     def test_guest_has_fave_song(self):
-        self.assertEqual (("The Notorious BIG", "Juicy"), (self.guest_1.Song.artist, self.guest_1.Song.title))
+        self.assertEqual (("The Notorious BIG", "Juicy"), (self.guest_1.song.artist, self.guest_1.song.title))
 
 
 
