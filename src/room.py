@@ -7,6 +7,7 @@ class Room ():
         self.songs_playlist = []    # list of Song objects
         self.till = 0
         self.entry_fee = 25
+        self.register = {}
   
     def check_in_guest (self, guest):
         if len(self.guests) < self.guest_capacity and guest.money >= self.entry_fee:
